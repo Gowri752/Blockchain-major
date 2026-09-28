@@ -1,0 +1,36 @@
+{
+  "name": "blockvision-blockchain",
+  "version": "1.0.0",
+  "description": "Blockchain configuration for BlockVision Image Verification System",
+  "main": "truffle-config.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:ganache": "hardhat run scripts/deploy.js --network ganache",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "deploy:goerli": "hardhat run scripts/deploy.js --network goerli",
+    "test": "hardhat test",
+    "node": "hardhat node",
+    "truffle:compile": "truffle compile",
+    "truffle:migrate": "truffle migrate",
+    "truffle:migrate:reset": "truffle migrate --reset"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "smart-contracts",
+    "image-verification"
+  ],
+  "author": "BlockVision",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@truffle/hdwallet-provider": "^2.1.15",
+    "hardhat": "^2.17.0",
+    "truffle": "^5.11.0",
+    "truffle-plugin-verify": "^0.6.7"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
