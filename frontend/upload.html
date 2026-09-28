@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image - BlockVision</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/upload.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    <span class="brand-name">BlockVision</span>
+                </div>
+                <div class="nav-links">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/upload" class="nav-link active">Upload</a>
+                    <a href="/verify" class="nav-link">Verify</a>
+                    <a href="/history" class="nav-link">History</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="upload-header">
+                <h1 class="page-title">
+                    Upload & Register <span class="gradient-text">Your Image</span>
+                </h1>
+                <p class="page-description">
+                    Secure your digital assets with blockchain-powered verification
+                </p>
+            </div>
+
+            <div class="upload-container">
+                <!-- Upload Card -->
+                <div class="upload-card glass-card">
+                    <div class="upload-zone" id="uploadZone">
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                        <div class="upload-content" id="uploadContent">
+                            <div class="upload-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                            </div>
+                            <h3 class="upload-title">Drop your image here</h3>
+                            <p class="upload-text">or click to browse</p>
+                            <p class="upload-hint">Supports: PNG, JPG, JPEG, GIF, BMP, WEBP (Max 16MB)</p>
+                        </div>
+                        <div class="image-preview" id="imagePreview" style="display: none;">
+                            <img id="previewImg" alt="Preview">
+                            <button class="btn-remove" id="removeImage">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <line x1="18" y1="6" x2="6" y2="18"/>
+                                    <line x1="6" y1="6" x2="18" y2="18"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="upload-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="encryptOption">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">
+                                <strong>Enable AES-256 Encryption</strong>
+                                <small>Encrypt your image for maximum security</small>
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="upload-actions">
+                        <button class="btn btn-primary btn-large btn-full" id="uploadBtn" disabled>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                            <span>Upload & Generate Hash</span>
+                        </button>
+                        <button class="btn btn-success btn-large btn-full" id="registerBtn" disabled style="display: none;">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                            <span>Register on Blockchain</span>
+                        </button>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-bar" id="progressBar" style="display: none;">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <!-- Info Card -->
+                <div class="info-card glass-card">
+                    <h3 class="info-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        Upload Process
+                    </h3>
+                    <div class="info-steps">
+                        <div class="info-step">
+                            <div class="step-icon">1</div>
+                            <div class="step-text">
+                                <strong>Select Image</strong>
+                                <p>Choose an image file from your device</p>
+                            </div>
+                        </div>
+                        <div class="info-step">
+                            <div class="step-icon">2</div>
+                            <div class="step-text">
+                                <strong>Generate Hash</strong>
+                                <p>SHA-256 hash is calculated from your image</p>
+                            </div>
+                        </div>
+                        <div class="info-step">
+                            <div class="step-icon">3</div>
+                            <div class="step-text">
+                                <strong>Register</strong>
+                                <p>Hash is stored on Ethereum blockchain</p>
+                            </div>
+                        </div>
+                        <div class="info-step">
+                            <div class="step-icon">4</div>
+                            <div class="step-text">
+                                <strong>Certificate</strong>
+                                <p>Receive proof of authenticity</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-security">
+                        <h4>🔒 Security Features</h4>
+                        <ul>
+                            <li>SHA-256 cryptographic hashing</li>
+                            <li>AES-256 bit encryption (optional)</li>
+                            <li>Immutable blockchain storage</li>
+                            <li>Timestamp verification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Card -->
+            <div class="result-card glass-card" id="resultCard" style="display: none;">
+                <div class="result-header">
+                    <div class="result-icon success" id="resultIcon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="result-title" id="resultTitle">Success!</h3>
+                    <p class="result-message" id="resultMessage">Your image has been successfully registered on the blockchain</p>
+                </div>
+
+                <div class="result-details" id="resultDetails">
+                    <!-- Details will be populated by JavaScript -->
+                </div>
+
+                <div class="result-actions">
+                    <button class="btn btn-secondary" id="downloadCertificate">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download Certificate
+                    </button>
+                    <button class="btn btn-primary" id="uploadAnother">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="1 4 1 10 7 10"/>
+                            <polyline points="23 20 23 14 17 14"/>
+                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+                        </svg>
+                        Upload Another Image
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+        </div>
+        <div class="toast-content">
+            <strong class="toast-title">Notification</strong>
+            <p class="toast-message">This is a notification message</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/web3-init.js"></script>
+    <script src="/js/upload.js"></script>
+</body>
+</html>
